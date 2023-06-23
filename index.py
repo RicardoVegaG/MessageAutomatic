@@ -7,9 +7,17 @@ FileName = StringVar()
 mensaje = ''
 
 
-def SendMessage(NumPhone):
-    print('+52'+NumPhone.get())
-    print(mensaje)
+def SendMessage(NumPhone, NumHor, NumMin):
+    phone = "+52"+NumPhone.get()
+    hour = int(NumHor.get())
+    minutes = int(NumMin.get())
+
+    pywhatkit.sendwhatmsg(
+        phone,
+        mensaje,
+        hour,
+        minutes
+    )
 
 
 def OpenFileForMessage(EntryInfo):
@@ -158,6 +166,71 @@ ButtonSelecciónMensaje = Button(
     y=137
 )
 
+# TEXT - ENTRY | INGRESE LA HORA
+
+TextIngreseHora = Label(
+    windows,
+    text='INGRESE LA HORA',
+    foreground='white',
+    background='#00a884',
+    font=(
+        'Arial Black',
+        12
+    )
+).place(
+    x=80,
+    y=184
+)
+
+EntryIngreseHora = Entry(
+    windows,
+    background='#005b47',
+    foreground='white',
+    font=(
+        'Arial',
+        14
+    ),
+    justify='center',
+    border=0
+)
+EntryIngreseHora.place(
+    width=326,
+    x=12,
+    y=227
+)
+
+# TEXT - ENTRY | INGRESE LOS MINUTOS
+
+TextIngreseMinutos = Label(
+    windows,
+    text='INGRESE LOS MINUTOS',
+    foreground='white',
+    background='#00a884',
+    font=(
+        'Arial Black',
+        12
+    )
+).place(
+    x=65,
+    y=264
+)
+
+EntryIngreseMinutos = Entry(
+    windows,
+    background='#005b47',
+    foreground='white',
+    font=(
+        'Arial',
+        14
+    ),
+    justify='center',
+    border=0
+)
+EntryIngreseMinutos.place(
+    width=326,
+    x=12,
+    y=307
+)
 
 # BUTTON | ENVIAR
 
@@ -177,7 +250,9 @@ ButtonEnviar = Button(
     command=lambda: [
         {
             SendMessage(
-                NumPhone=EntryNumeroTeléfono
+                NumPhone=EntryNumeroTeléfono,
+                NumHor=EntryIngreseHora,
+                NumMin=EntryIngreseMinutos
             )
         }
     ]
