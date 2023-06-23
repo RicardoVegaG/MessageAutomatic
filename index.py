@@ -1,13 +1,14 @@
 from tkinter import Tk, Entry, Label, filedialog, Button, StringVar, PhotoImage
 import os
+import pywhatkit
 
 windows = Tk()
 FileName = StringVar()
 mensaje = ''
 
 
-def SendMessage():
-    
+def SendMessage(NumPhone):
+    print('+52'+NumPhone.get())
     print(mensaje)
 
 
@@ -85,7 +86,8 @@ EntryNumeroTeléfono = Entry(
     ),
     justify='center',
     border=0
-).place(
+)
+EntryNumeroTeléfono.place(
     width=326,
     x=12,
     y=63
@@ -174,7 +176,9 @@ ButtonEnviar = Button(
     cursor='hand2',
     command=lambda: [
         {
-            SendMessage()
+            SendMessage(
+                NumPhone=EntryNumeroTeléfono
+            )
         }
     ]
 ).place(
