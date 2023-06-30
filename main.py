@@ -1,11 +1,67 @@
-from tkinter import Tk, PhotoImage, Label, StringVar, Button, Entry
+from tkinter import Tk, PhotoImage, Label, StringVar, Button, Entry, filedialog
+import os
+import pywhatkit
+
+# Principal
 
 Windows = Tk()
 NumberPhone = StringVar()
 NumberHours = StringVar()
 NumberMinutes = StringVar()
+Message = ''
+
+# Functions
+
+
+def SendMessage():
+    Phone = "+52"+NumberPhone.get()
+    Hours = int(
+        NumberHours.get()
+    )
+    Minutes = int(
+        NumberMinutes.get()
+    )
+
+    pywhatkit.sendwhatmsg(
+        Phone,
+        Message,
+        Hours,
+        Minutes
+    )
+
+
+def OpenFilesForMessage(Entry):
+    global Message
+    Entry.config(
+        state='normal'
+    )
+    Entry.delete(
+        '0',
+        'end'
+    )
+    FileName = filedialog.askopenfilename(
+        filetypes=[
+            (
+                'Archivos de texto', '*.txt'
+            )
+        ]
+    )
+    NameTheFile = os.path.basename(
+        FileName
+    )
+
+    Entry.insert(
+        'end',
+        NameTheFile
+    )
+    Entry.config(
+        state='disabled'
+    )
+    with open(FileName, 'r') as file:
+        Message = file.read()
 
 # View Windows
+
 
 Windows.geometry(
     '390x844+200+100'
@@ -89,7 +145,14 @@ ButtonFile = Button(
     border=0,
     activebackground='#00a884',
     background='#00a884',
-    cursor='hand2'
+    cursor='hand2',
+    command=lambda: [
+        {
+            OpenFilesForMessage(
+                Entry=EntrySelectMessage
+            )
+        }
+    ]
 )
 ButtonFile.place(
     x=315,
@@ -152,7 +215,12 @@ ButtonSend = Button(
     border='0',
     cursor='hand2',
     activebackground='#359b85',
-    activeforeground='white'
+    activeforeground='white',
+    command=lambda: [
+        {
+            SendMessage()
+        }
+    ]
 )
 ButtonSend.place(
     x=75,
