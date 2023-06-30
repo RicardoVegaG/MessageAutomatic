@@ -1,6 +1,4 @@
-from tkinter import Tk, PhotoImage, Label
-from tkinter import StringVar, Button
-from tkinter import Entry, filedialog
+from tkinter import Tk, PhotoImage, Label, StringVar, Button, Entry, filedialog
 import os
 import pywhatkit
 
