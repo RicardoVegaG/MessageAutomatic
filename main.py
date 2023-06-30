@@ -2,7 +2,7 @@ from tkinter import Tk, PhotoImage, Label, StringVar, Button, Entry, filedialog
 import os
 import pywhatkit
 
-# Principal
+# Principala
 
 Windows = Tk()
 NumberPhone = StringVar()
