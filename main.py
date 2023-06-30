@@ -1,10 +1,9 @@
-from tkinter import Tk, PhotoImage, Label, StringVar, Button
+from tkinter import Tk, PhotoImage, Label, StringVar, Button, Entry
 
 Windows = Tk()
 NumberPhone = StringVar()
 NumberHours = StringVar()
 NumberMinutes = StringVar()
-
 
 # View Windows
 
@@ -34,6 +33,50 @@ BackgroundApp = Label(
 )
 BackgroundApp.pack()
 
+# Entry Number Phone | App
+
+EntryNumberPhone = Entry(
+    Windows,
+    textvariable=NumberPhone,
+    background='#148d73',
+    foreground='white',
+    font=(
+        'Fredoka One',
+        20
+    ),
+    justify='center',
+    border=0
+)
+
+EntryNumberPhone.place(
+    width=326,
+    x=31,
+    y=241
+)
+
+# Entry Select Message | App
+
+EntrySelectMessage = Entry(
+    Windows,
+    background='#148d73',
+    foreground='white',
+    font=(
+        'Fredoka One',
+        20
+    ),
+    justify='center',
+    border=0,
+    state='disabled',
+    disabledbackground='#148d73',
+    disabledforeground='white'
+)
+
+EntrySelectMessage.place(
+    width=260,
+    x=31,
+    y=347
+)
+
 # Button File | App
 
 ButtonFileImg = PhotoImage(
@@ -53,6 +96,47 @@ ButtonFile.place(
     y=346
 )
 
+# Entry Number Hours | App
+
+EntryNumberHours = Entry(
+    Windows,
+    background='#148d73',
+    textvariable=NumberHours,
+    foreground='white',
+    font=(
+        'Fredoka One',
+        20
+    ),
+    justify='center',
+    border=0
+)
+
+EntryNumberHours.place(
+    width=326,
+    x=31,
+    y=453
+)
+
+# Entry Number Minutes | App
+
+EntryNumberMinutes = Entry(
+    Windows,
+    background='#148d73',
+    textvariable=NumberMinutes,
+    foreground='white',
+    font=(
+        'Fredoka One',
+        20
+    ),
+    justify='center',
+    border=0
+)
+
+EntryNumberMinutes.place(
+    width=326,
+    x=31,
+    y=563
+)
 
 # Button Send | App
 
