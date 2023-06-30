@@ -6,7 +6,7 @@ windows = Tk()
 FileName = StringVar()
 mensaje = ''
 
-
+ 
 def SendMessage(NumPhone, NumHor, NumMin):
     phone = "+52"+NumPhone.get()
     hour = int(NumHor.get())
@@ -52,7 +52,7 @@ def OpenFileForMessage(EntryInfo):
 
 
 windows.geometry(
-    '350x500+780+280'
+    '390x844+780+280'
 )
 windows.title(
     'WhatsApp || Messages Automatic'
